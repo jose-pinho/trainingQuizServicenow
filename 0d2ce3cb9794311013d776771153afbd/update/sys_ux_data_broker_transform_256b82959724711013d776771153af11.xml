@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_data_broker_transform">
+    <sys_ux_data_broker_transform action="INSERT_OR_UPDATE">
+        <acl_failure_result/>
+        <api_name>x_934615_kiss.get_setup_custom</api_name>
+        <description>Criação de interaction com base no usuario logado</description>
+        <mutates_server_data>false</mutates_server_data>
+        <name>get_setup_custom</name>
+        <output_schema/>
+        <private>false</private>
+        <props>[&#13;
+	{&#13;
+	  "name": "sys_id",&#13;
+	  "label": "Setup Id",&#13;
+	  "description": "Add guided setup id",&#13;
+	  "readOnly": false,&#13;
+	  "fieldType": "string",&#13;
+	  "mandatory": true,&#13;
+	  "defaultValue": ""&#13;
+	}&#13;
+]</props>
+        <required_translations>[ {
+  "message" : "Add guided setup id",
+  "comment" : ""
+}, {
+  "message" : "Setup Id",
+  "comment" : ""
+} ]</required_translations>
+        <schema_version>1.0.0</schema_version>
+        <script><![CDATA[function transform(input) {
+
+
+    var guidance = input.sys_id;
+
+    var user = gs.getUserID();
+
+    var obj = {};
+
+
+    obj.result = {};
+
+
+    var grSetup = new GlideRecord("help_guidance");
+
+    grSetup.addQuery('sys_id', guidance);
+
+    grSetup.query();
+
+
+    if (grSetup.next()) {
+
+
+        var grHUI = new GlideRecord("help_user_interaction");
+
+        grHUI.addQuery('guidance', guidance);
+
+        grHUI.addQuery('user', user);
+
+        grHUI.query();
+
+        grHUI.next();
+
+
+        var steps = [];
+
+        var grSteps = new GlideRecord("help_guidance_step");
+
+        grSteps.addQuery('guidance', guidance);
+
+        grSteps.addQuery('parent', '');
+
+        grSteps.orderBy('order');
+
+        grSteps.query();
+
+
+        while (grSteps.next()) {
+
+            var step_id = grSteps.getUniqueValue();
+
+            var grStepContent = new GlideRecord("help_content");
+
+            grStepContent.get('guidance_step', step_id);
+
+
+
+            var grHUIStep = new GlideRecord("help_user_interaction_step");
+
+            grHUIStep.addQuery('step', step_id);
+
+            grHUIStep.addQuery('user_interaction.user', user);
+
+            grHUIStep.query();
+
+            grHUIStep.next();
+
+
+
+
+            var stepObj = {
+
+                "description": grSteps.getValue("description"),
+
+                "guidance": guidance,
+
+                "has_decision": grSteps.getValue("has_decision"),
+
+                "layout": grSteps.getValue("layout"),
+
+                "name": grSteps.getValue("name"),
+
+                "order": grSteps.getValue("order"),
+
+                "parent": grSteps.getValue("parent"),
+
+                "skippable": grSteps.getValue("skippable"),
+
+                "sys_decision": grSteps.getValue("sys_decision"),
+
+                "sys_id": grSteps.getValue("sys_id"),
+
+                "type": grSteps.getValue("type"),
+
+                "unlock_by_decision_step": grSteps.getValue("unlock_by_decision_step"),
+
+                "status": grSteps.getValue("status"),
+
+                "task_type": grSteps.getValue("task_type"),
+
+                "rich_description": grSteps.getValue("rich_description"),
+
+                "interactionStatus": grHUIStep.getDisplayValue("status"),
+
+                "interactionId": step_id,
+
+                "hasChildren": true,
+
+                "isDependent": false,
+
+                "dependencies": null,
+
+                "isLocked": false,
+
+                content: {
+
+                    "sys_id": grStepContent.getUniqueValue(),
+
+                    "title": grStepContent.getValue("title"),
+
+                    "records": grStepContent.getValue("records"),
+
+                    "configuration_types": grStepContent.getValue("configuration_types"),
+
+                    "type": grStepContent.getValue("type"),
+
+                    "table_name": grStepContent.getValue("table_name"),
+
+                    "field_name": grStepContent.getValue("field_name"),
+
+                    "view": grStepContent.getValue("view"),
+
+                    "url": grStepContent.getValue("url"),
+
+                    "related_content": grStepContent.getValue("related_content")
+
+                }
+
+            };
+
+            steps.push(stepObj);
+
+        }
+
+
+        obj.result.setup = {
+
+
+            active: grSetup.getValue('active'),
+
+            description: grSetup.getValue('description'),
+
+            name: grSetup.getValue('name'),
+
+            roles: grSetup.getValue('roles'),
+
+            snc_created: grSetup.getValue('snc_created'),
+
+            status: grSetup.getValue('status'),
+
+            sys_id: grSetup.getValue('sys_id'),
+
+            type: grSetup.getValue('type'),
+
+            version: grSetup.getValue('version'),
+
+            checklist: grSetup.getValue('checklist'),
+
+            order: grSetup.getValue('order'),
+
+            activeSetupType: grHUI.getValue("active_setup_type"),
+
+            isComplete: grHUI.getValue("status") == "completed",
+
+            interactionId: grHUI.getUniqueValue(),
+
+            interactionStatus: grHUI.getDisplayValue("status"),
+
+            steps: steps,
+
+        };
+
+    }
+
+
+    return obj;
+
+
+
+}]]></script>
+        <sys_class_name>sys_ux_data_broker_transform</sys_class_name>
+        <sys_created_by>vi.miranda</sys_created_by>
+        <sys_created_on>2023-08-08 12:09:23</sys_created_on>
+        <sys_id>256b82959724711013d776771153af11</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>get_setup_custom</sys_name>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_update_name>sys_ux_data_broker_transform_256b82959724711013d776771153af11</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-08 14:09:07</sys_updated_on>
+    </sys_ux_data_broker_transform>
+    <sys_translated_text action="delete_multiple" query="documentkey=256b82959724711013d776771153af11"/>
+</record_update>

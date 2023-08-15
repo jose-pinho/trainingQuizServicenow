@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_composite_data_m2m_datasource">
+    <sys_ux_composite_data_m2m_datasource action="INSERT_OR_UPDATE">
+        <dataset display_value="Custom Portal Landing - My Requests Dataset">c79f67cf7d9431105d82868c412f4ecd</dataset>
+        <datasource display_value="My Request - Incident datasource">0f9f67cfcb9431108de633fda2f886cb</datasource>
+        <sys_class_name>sys_ux_composite_data_m2m_datasource</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2023-08-01 19:40:56</sys_created_on>
+        <sys_id>4b9f67cf89943110ffb27a2ac262d4cb</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name/>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_update_name>sys_ux_composite_data_m2m_datasource_4b9f67cf89943110ffb27a2ac262d4cb</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2023-08-01 19:40:56</sys_updated_on>
+    </sys_ux_composite_data_m2m_datasource>
+</record_update>

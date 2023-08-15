@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_event">
+    <sys_ux_event action="INSERT_OR_UPDATE">
+        <description/>
+        <event_name>GLIDE_FORM_1_SAVE_RELAY_cb9f67cfc794311075891e89f4d1add8</event_name>
+        <explicit_api_name/>
+        <interfaces/>
+        <label>Glide Form 1 SAVE Relay (Tasks Default)</label>
+        <props>[]</props>
+        <required_translations/>
+        <schema_version>1.0.0</schema_version>
+        <sys_class_name>sys_ux_event</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2023-08-01 19:40:56</sys_created_on>
+        <sys_id>cf9f67cf1b943110e26d0cb094b511c2</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Glide Form 1 SAVE Relay (Tasks Default)</sys_name>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_update_name>sys_ux_event_cf9f67cf1b943110e26d0cb094b511c2</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2023-08-01 19:40:56</sys_updated_on>
+    </sys_ux_event>
+    <sys_translated_text action="delete_multiple" query="documentkey=cf9f67cf1b943110e26d0cb094b511c2"/>
+</record_update>

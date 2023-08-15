@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="help_guidance_step">
+    <help_guidance_step action="INSERT_OR_UPDATE">
+        <actions_label>{"next":"Next","prev":"Previous","submit":"Submit"}</actions_label>
+        <active>true</active>
+        <allow_delegation>true</allow_delegation>
+        <callout_position>default</callout_position>
+        <description/>
+        <guidance display_value="Teste XP">bda38e0197e0311013d776771153afb5</guidance>
+        <has_decision>false</has_decision>
+        <layout>text</layout>
+        <name>Task4.2</name>
+        <order>2</order>
+        <parent display_value="Quarta categoria">099acfe19720311013d776771153af7a</parent>
+        <rich_description><![CDATA[<p>haushdpaekd</p>]]></rich_description>
+        <roles/>
+        <script/>
+        <skippable>false</skippable>
+        <status>0</status>
+        <sys_class_name>help_guidance_step</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-09 11:25:31</sys_created_on>
+        <sys_decision/>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>0dfa4f259720311013d776771153afc0</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Task4.2</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_update_name>help_guidance_step_0dfa4f259720311013d776771153afc0</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-09 11:26:17</sys_updated_on>
+        <target_element/>
+        <task_type>basic</task_type>
+        <type>activity</type>
+        <unlock_by_decision_step>false</unlock_by_decision_step>
+    </help_guidance_step>
+    <sys_translated_text action="delete_multiple" query="documentkey=0dfa4f259720311013d776771153afc0"/>
+</record_update>

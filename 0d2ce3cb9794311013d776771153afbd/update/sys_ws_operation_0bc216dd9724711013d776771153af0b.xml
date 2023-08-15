@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ws_operation">
+    <sys_ws_operation action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <consumes>application/json,application/xml,text/xml</consumes>
+        <consumes_customized>false</consumes_customized>
+        <default_operation_uri/>
+        <enforce_acl>d684e2aa530e0110f54fddeeff7b1237</enforce_acl>
+        <http_method>GET</http_method>
+        <name>Custom guided</name>
+        <operation_script><![CDATA[(function process( /*RESTAPIRequest*/ request, /*RESTAPIResponse*/ response) {
+
+ 
+
+    try {
+        var step_id = request.pathParams.step_id;
+        var guidance_id = request.pathParams.guidance_id;
+        var user = gs.getUserID();
+
+        var steps = {};
+        steps.tasks = [];
+
+        var grSteps = new GlideRecord("help_guidance_step");
+        grSteps.addQuery('guidance', guidance_id);
+        grSteps.addQuery('parent', step_id);
+        grSteps.orderBy('order');
+        grSteps.query();
+
+        while (grSteps.next()) {
+
+
+            var grHUIStep = new GlideRecord("help_user_interaction_step");
+            grHUIStep.addQuery('step', grSteps.getUniqueValue());
+            grHUIStep.addQuery('user_interaction.user', user);
+            grHUIStep.query();
+            grHUIStep.next();
+ 
+            var step = {
+                "sys_id": grSteps.getUniqueValue(),
+                "name": grSteps.getValue("name"),
+                "interactionStatus": grHUIStep.getDisplayValue("status"),
+                "task_type": grHUIStep.getValue("task_type"),
+				"status": grSteps.getValue("status"),
+				"parent": grSteps.getValue("parent"),
+				"guidance": guidance_id,
+				"interactionId": grHUIStep.getValue("user_interaction"),
+				"order": grSteps.getValue("order"),
+				"idDependent": false,
+				"dependencies": null,
+                "isLocked": false
+
+            };
+
+ 
+
+            steps.tasks.push(step);
+
+        }
+
+ 
+
+        response.setBody(steps);
+
+ 
+
+    } catch (e) {
+
+        response.setStatus(500);
+
+        gs.error("Error: " + e.message);
+
+        response.setBody({
+
+            error: "Internal server error"
+
+        });
+
+    }
+
+ 
+
+})(request, response);]]></operation_script>
+        <operation_uri>/api/x_934615_kiss/custom_guided/tasks/{guidance_id}/{step_id}</operation_uri>
+        <produces>application/json,application/xml,text/xml</produces>
+        <produces_customized>false</produces_customized>
+        <relative_path>/tasks/{guidance_id}/{step_id}</relative_path>
+        <request_example/>
+        <requires_acl_authorization>true</requires_acl_authorization>
+        <requires_authentication>true</requires_authentication>
+        <requires_snc_internal_role>true</requires_snc_internal_role>
+        <short_description/>
+        <sys_class_name>sys_ws_operation</sys_class_name>
+        <sys_created_by>vi.miranda</sys_created_by>
+        <sys_created_on>2023-08-08 12:43:33</sys_created_on>
+        <sys_id>0bc216dd9724711013d776771153af0b</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>Custom guided</sys_name>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_update_name>sys_ws_operation_0bc216dd9724711013d776771153af0b</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-09 14:23:41</sys_updated_on>
+        <web_service_definition display_value="Custom guided">a29212dd9724711013d776771153af65</web_service_definition>
+        <web_service_version/>
+    </sys_ws_operation>
+</record_update>

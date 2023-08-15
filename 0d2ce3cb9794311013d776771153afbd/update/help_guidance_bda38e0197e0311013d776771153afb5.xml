@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update sys_domain="global" table="help_guidance">
+    <help_guidance action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <app_route/>
+        <auto_launch_order/>
+        <checklist/>
+        <context/>
+        <description>Teste experience</description>
+        <eh_content/>
+        <name>Teste XP</name>
+        <order/>
+        <roles/>
+        <route_params/>
+        <snc_created>false</snc_created>
+        <status>published</status>
+        <sys_class_name>help_guidance</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-07 16:57:03</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>bda38e0197e0311013d776771153afb5</sys_id>
+        <sys_mod_count>5</sys_mod_count>
+        <sys_name>Teste XP</sys_name>
+        <sys_overrides/>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_update_name>help_guidance_bda38e0197e0311013d776771153afb5</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-09 11:26:28</sys_updated_on>
+        <topic_id/>
+        <type>global_setup</type>
+        <version>utah</version>
+    </help_guidance>
+    <sys_translated_text action="delete_multiple" query="documentkey=bda38e0197e0311013d776771153afb5"/>
+</record_update>

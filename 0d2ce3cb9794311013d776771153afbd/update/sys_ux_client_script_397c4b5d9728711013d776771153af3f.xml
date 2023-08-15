@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="INSERT_OR_UPDATE">
+        <includes/>
+        <macroponent display_value="Default">b39b4b599728711013d776771153afa6</macroponent>
+        <name>Navigate to setup page</name>
+        <preset/>
+        <required_translations>[ ]</required_translations>
+        <script><![CDATA[/**
+ * @param {params} params
+ * @param {api} params.api
+ * @param {any} params.event
+ * @param {any} params.imports
+ * @param {ApiHelpers} params.helpers
+ */
+function handler({
+    api,
+    event,
+    helpers,
+    imports
+}) {
+    let header = null;
+    if (api.context.props && api.context.props.hidePolarisHeader == 'true') {
+        header = 'true';
+    }
+
+    helpers.navigate.to("setup", {
+        "sysId": api.context.props.setupId
+    }, {
+        "customId": new Date().getTime(),
+        "hidePolarisHeader": header
+    });
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-08 16:53:39</sys_created_on>
+        <sys_id>397c4b5d9728711013d776771153af3f</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Navigate to setup page</sys_name>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_update_name>sys_ux_client_script_397c4b5d9728711013d776771153af3f</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-08 17:03:25</sys_updated_on>
+        <target>macroponent</target>
+        <type>default</type>
+    </sys_ux_client_script>
+</record_update>

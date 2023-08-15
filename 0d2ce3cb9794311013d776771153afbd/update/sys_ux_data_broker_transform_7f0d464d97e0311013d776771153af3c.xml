@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_data_broker_transform">
+    <sys_ux_data_broker_transform action="INSERT_OR_UPDATE">
+        <acl_failure_result/>
+        <api_name>x_934615_kiss.create_help_user_interaction</api_name>
+        <description>Criação de interaction com base no usuario logado</description>
+        <mutates_server_data>false</mutates_server_data>
+        <name>create_help_user_interaction</name>
+        <output_schema/>
+        <private>false</private>
+        <props>[&#13;
+	{&#13;
+	  "name": "sys_id",&#13;
+	  "label": "Setup Id",&#13;
+	  "description": "Add guided setup id",&#13;
+	  "readOnly": false,&#13;
+	  "fieldType": "string",&#13;
+	  "mandatory": true,&#13;
+	  "defaultValue": ""&#13;
+	}&#13;
+]</props>
+        <required_translations>[ {
+  "message" : "Add guided setup id",
+  "comment" : ""
+}, {
+  "message" : "Setup Id",
+  "comment" : ""
+} ]</required_translations>
+        <schema_version>1.0.0</schema_version>
+        <script><![CDATA[function transform(input) {
+    var xp = new GlideRecord('help_user_interaction');
+    xp.addEncodedQuery('userDYNAMIC90d1921e5f510100a9ad2572f2b477fe^guidance=bda38e0197e0311013d776771153afb5');
+    xp.query();
+    if (!xp.next()) {
+        var registro = new GlideRecord('help_user_interaction');
+        registro.initialize();
+        registro.user = gs.getUserID();
+        registro.guidance = input.sys_id;
+        registro.active_setup_type = 'best_exp';
+        registro.status = 'not_started';
+        registro.insert();
+    }
+    return true;
+}]]></script>
+        <sys_class_name>sys_ux_data_broker_transform</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-07 17:49:09</sys_created_on>
+        <sys_id>7f0d464d97e0311013d776771153af3c</sys_id>
+        <sys_mod_count>2</sys_mod_count>
+        <sys_name>create_help_user_interaction</sys_name>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_update_name>sys_ux_data_broker_transform_7f0d464d97e0311013d776771153af3c</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-07 17:57:46</sys_updated_on>
+    </sys_ux_data_broker_transform>
+    <sys_translated_text action="delete_multiple" query="documentkey=7f0d464d97e0311013d776771153af3c"/>
+</record_update>

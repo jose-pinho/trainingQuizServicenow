@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_page_registry">
+    <sys_ux_page_registry action="DELETE">
+        <active>true</active>
+        <admin_panel>fa9f67cf9794311013d776771153af7f</admin_panel>
+        <admin_panel_table>sys_ux_app_config</admin_panel_table>
+        <auth_routes>{"login":"login","logout": "login"}</auth_routes>
+        <page/>
+        <parent_app/>
+        <path>kiss</path>
+        <root_macroponent display_value="Portal App Shell">b66bf1075b31101016fd7c1bf481c7a7</root_macroponent>
+        <sys_class_name>sys_ux_page_registry</sys_class_name>
+        <sys_created_by>system</sys_created_by>
+        <sys_created_on>2023-08-01 19:40:56</sys_created_on>
+        <sys_id>f69f67cf9794311013d776771153af7f</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>kiss</sys_name>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_update_name>sys_ux_page_registry_f69f67cf9794311013d776771153af7f</sys_update_name>
+        <sys_updated_by>system</sys_updated_by>
+        <sys_updated_on>2023-08-01 19:40:56</sys_updated_on>
+        <title>kiss</title>
+    </sys_ux_page_registry>
+    <sys_update_version action="INSERT_OR_UPDATE">
+        <action>DELETE</action>
+        <application display_value="kiss">0d2ce3cb9794311013d776771153afbd</application>
+        <file_path/>
+        <instance_id>22617fbedb65251837a0c59705961939</instance_id>
+        <instance_name>dev165474</instance_name>
+        <name>sys_ux_page_registry_f69f67cf9794311013d776771153af7f</name>
+        <payload><![CDATA[<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_page_registry"><sys_ux_page_registry action="INSERT_OR_UPDATE"><active>true</active><admin_panel>fa9f67cf9794311013d776771153af7f</admin_panel><admin_panel_table>sys_ux_app_config</admin_panel_table><auth_routes>{"login":"login","logout": "login"}</auth_routes><page/><parent_app/><path>kiss</path><root_macroponent display_value="Portal App Shell">b66bf1075b31101016fd7c1bf481c7a7</root_macroponent><sys_class_name>sys_ux_page_registry</sys_class_name><sys_created_by>system</sys_created_by><sys_created_on>2023-08-01 19:40:56</sys_created_on><sys_id>f69f67cf9794311013d776771153af7f</sys_id><sys_mod_count>0</sys_mod_count><sys_name>kiss</sys_name><sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package><sys_policy/><sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope><sys_update_name>sys_ux_page_registry_f69f67cf9794311013d776771153af7f</sys_update_name><sys_updated_by>system</sys_updated_by><sys_updated_on>2023-08-01 19:40:56</sys_updated_on><title>kiss</title></sys_ux_page_registry></record_update>]]></payload>
+        <payload_hash>-602380689</payload_hash>
+        <record_name>kiss</record_name>
+        <reverted_from/>
+        <source>5dfc47329733211013d776771153af5a</source>
+        <source_table>sys_upgrade_history</source_table>
+        <state>previous</state>
+        <sys_created_by/>
+        <sys_created_on>2023-07-07 01:59:35</sys_created_on>
+        <sys_id>20c0028d97a0311013d776771153af78</sys_id>
+        <sys_mod_count/>
+        <sys_recorded_at>1892e1377580000000</sys_recorded_at>
+        <sys_updated_by/>
+        <sys_updated_on/>
+        <type>UX Application</type>
+        <update_guid>ecc0028d88a03110090e27be17102c77</update_guid>
+        <update_guid_history>ecc0028d88a03110090e27be17102c77:-602380689</update_guid_history>
+    </sys_update_version>
+    <sys_metadata_delete action="INSERT_OR_UPDATE">
+        <sys_audit_delete/>
+        <sys_class_name>sys_metadata_delete</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-07 16:44:25</sys_created_on>
+        <sys_db_object display_value="" name="sys_ux_page_registry">sys_ux_page_registry</sys_db_object>
+        <sys_id>399e9ceeaa2445daaee1b0a6bd0ff284</sys_id>
+        <sys_metadata>f69f67cf9794311013d776771153af7f</sys_metadata>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>kiss</sys_name>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_parent/>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_scope_delete display_value="">023d203f6ed7463a84f07ff9b0e27664</sys_scope_delete>
+        <sys_update_name>sys_ux_page_registry_f69f67cf9794311013d776771153af7f</sys_update_name>
+        <sys_update_version display_value="sys_ux_page_registry_f69f67cf9794311013d776771153af7f">20c0028d97a0311013d776771153af78</sys_update_version>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-07 16:44:25</sys_updated_on>
+    </sys_metadata_delete>
+</record_update>

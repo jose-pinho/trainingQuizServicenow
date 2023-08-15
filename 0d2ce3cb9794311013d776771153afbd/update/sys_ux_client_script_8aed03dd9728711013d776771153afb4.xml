@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ux_client_script">
+    <sys_ux_client_script action="INSERT_OR_UPDATE">
+        <includes/>
+        <macroponent display_value="Default">b39b4b599728711013d776771153afa6</macroponent>
+        <name>Footer handler</name>
+        <preset/>
+        <required_translations>[ ]</required_translations>
+        <script><![CDATA[/**
+ * @param {params} params
+ * @param {api} params.api
+ * @param {any} params.event
+ * @param {any} params.imports
+ * @param {ApiHelpers} params.helpers
+ */
+function handler({
+    api,
+    event,
+    helpers,
+    imports
+}) {
+
+    const isTableFooterEvent = event.name === 'SN_HELP_SETUP_FOOTER#PRIMARY_CLICKED' && api.state.detailTask.configuration_types === "table";
+    const isPluginFooterEvent = event.name === 'SN_HELP_SETUP_FOOTER#PRIMARY_CLICKED' && api.state.detailTask.configuration_types === "install_plugin";
+
+    if (api.state.isTaskCompleted && !isPluginFooterEvent)
+        return;
+
+    if (isTableFooterEvent) {
+        api.data.gform.save();
+        return;
+    }
+
+    if (event.name === "SN_FORM_DATA_CONNECTED#FETCH_SUCCESS") {
+        const {
+            enabled,
+            canCreateGlobalTags
+        } = event.payload.data.GlideViewQuery_Query.uiView.glideLayoutItem._query.GlideViewableTagQuery_Query.viewableRecordTags;
+
+        if (!enabled && !canCreateGlobalTags)
+            return;
+    }
+    const moveToNextStep = () => {
+        const {
+            taskId,
+            groups: categories,
+            taskList,
+            categoryId
+        } = api.state;
+        let route, fields, params = {},
+            markAsComplete = false;
+        let currentTaskIndex = taskId ? taskList.findIndex(step => step.sys_id === taskId) : 0;
+        let header = null;
+        if (api.context.props && api.context.props.hidePolarisHeader == 'true') {
+            header = 'true';
+        }
+        //Move to next task if task is available 
+        if (currentTaskIndex + 1 < taskList.length) {
+            route = 'tasks';
+            fields = {
+                setupId: api.context.props.setupId
+            };
+            params = {
+                'categoryId': categoryId,
+                'taskId': taskList[currentTaskIndex + 1].sys_id,
+                'hidePolarisHeader': header
+            };
+            markAsComplete = taskList[currentTaskIndex + 1].interactionStatus === 'Completed';
+        } else {
+
+            let currentCategoryIndex = categories.findIndex(category => category.sys_id === api.context.props.categoryId);
+
+            if (currentCategoryIndex === categories.length - 1) { 
+                //Last category - Move to all categories
+                if (header) {
+                    // If in embed mode, move to first category
+                    route = 'tasks';
+                    fields = {
+                        setupId: api.context.props.setupId
+                    };
+                    params = {
+                        'categoryId': categories[0].sys_id,
+                        'hidePolarisHeader': header
+                    };
+                } else {
+                    const timeStamp = new Date().getTime();
+                    route = 'setup';
+                    fields = {
+                        sysId: api.context.props.setupId
+                    };
+                    params = {
+                        'customId': timeStamp,
+                        'hidePolarisHeader': header
+                    };
+                }
+                
+            } else { //Move to next category
+                route = 'tasks';
+                fields = {
+                    setupId: api.context.props.setupId
+                };
+                params = {
+                    'categoryId': categories[currentCategoryIndex + 1].sys_id,
+                    'hidePolarisHeader': header
+                };
+            }
+        }
+        api.emit('NAV_ITEM_SELECTED', {
+            route,
+            fields,
+            params
+        });
+        api.emit('NOW_UXF_PAGE#CLEAR_NOTIFICATIONS');
+        api.setState('isLocked', false);
+        api.setState('markAsComplete', markAsComplete);
+        api.setState('selectedTaskId', [
+            []
+        ]);
+    };
+
+    if (api.state.detailTask.configuration_types === "install_plugin") {
+        if (api.state.installPlugins.length > 0) {
+            helpers
+                .translate('Failed to install Plugins.')
+                .then((msg) => {
+                    api.setState('pluginFailMsg', msg);
+                });
+            api.emit('MODAL_SELECTED', {
+                modalId: "[component-id$='installing_plugins_modal']",
+                showModal: true,
+                bare: true,
+                displayOptions: {
+                    size: "md"
+                }
+            });
+        } else {
+            //Move to next category, if category is not available move to categories page
+            moveToNextStep();
+        }
+    } else
+        moveToNextStep();
+}]]></script>
+        <script_api_version>2.0.0</script_api_version>
+        <sys_class_name>sys_ux_client_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-08-08 16:59:57</sys_created_on>
+        <sys_id>8aed03dd9728711013d776771153afb4</sys_id>
+        <sys_mod_count>1</sys_mod_count>
+        <sys_name>Footer handler</sys_name>
+        <sys_package display_value="kiss" source="x_934615_kiss">0d2ce3cb9794311013d776771153afbd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="kiss">0d2ce3cb9794311013d776771153afbd</sys_scope>
+        <sys_update_name>sys_ux_client_script_8aed03dd9728711013d776771153afb4</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-08-08 17:03:25</sys_updated_on>
+        <target>macroponent</target>
+        <type>default</type>
+    </sys_ux_client_script>
+</record_update>

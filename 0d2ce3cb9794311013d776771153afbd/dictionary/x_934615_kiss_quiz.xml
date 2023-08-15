@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="665de70f9794311013d776771153afd6" label="Quiz" max_length="40" name="x_934615_kiss_quiz" text_index="true" type="collection">
+        <element label="Alternative A" max_length="40" name="alternative_a" type="string"/>
+        <element label="Alternative B" max_length="40" name="alternative_b" type="string"/>
+        <element label="Alternative C" max_length="40" name="alternative_c" type="string"/>
+        <element label="Correct" max_length="40" name="correct" type="string"/>
+        <element attributes="edge_encryption_enabled=true" default="javascript:global.getNextObjNumberPadded();" label="Number" max_length="40" name="number" type="string"/>
+        <element display="true" label="Question" max_length="100" name="question" type="string"/>
+    </element>
+</database>
